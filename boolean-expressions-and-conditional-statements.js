@@ -28,9 +28,11 @@ const readline = require('readline-sync');
 
 const hasTorch = true;
 const hasMap = false;
+let hasGold = true;
+let hasSword = false;
 
 console.log("You see two paths: one leads to the mountains, the other to the village.");
-const choice = readline.question("Do you go to the 'mountains' or the 'village'?");
+const choice = readline.question("Do you go to the 'mountains' or the 'village'? ");
 
 if (choice === "mountains" && hasTorch) {
   console.log("You safely navigate through the dark mountains.");
@@ -38,6 +40,18 @@ if (choice === "mountains" && hasTorch) {
   console.log("It's too dark to proceed. You decide to turn back.");
 } else if (choice === "village" || hasMap) {
   console.log("You find your way to the village.");
+  console.log("You see a shop, and an inn.");
+  let choice2 = readline.question("Do you go to the 'shop' or the 'inn'? ");
+  if (choice2  === "shop" && hasGold){
+    console.log("You enter the shop. You buy a sword with your gold.")
+    hasSword = true;
+  } else if (choice2 === "shop"){
+    console.log("You enter the shop, but realize you have no money to buy anything.")
+  } else if (choice2 === "inn") {
+    console.log("You enter the inn. It is mostly empty, but there is a fire in the fireplace. You sit down next to it.")
+  } else {
+  console.log("You get lost and wander aimlessly.");
+  }
 } else {
   console.log("You get lost and wander aimlessly.");
 }
